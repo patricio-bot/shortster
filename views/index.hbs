@@ -1,0 +1,34 @@
+<div class="container">
+    <h1 class='my-4'>{{title}}</h1>
+    <p>Welcome to {{title}}</p>
+
+    <form action="/shortcode" method='POST' class="my-4">
+        <label class="visually-hidden form-label" for="longUrl">Url</label>
+        <div class="input-group">
+            <input required placeholder='URL' type="url" name="longUrl" id="longUrl" class="form-control mr-2 col">
+            <button class="btn btn-success" type="submit">Short</button>
+        </div>
+    </form>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Full URL</th>
+                    <th>Short URL</th>
+                    <th>Clicks</th>
+                </tr>
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="https://github.com/patricio-bot" target="_blank">https://github.com/patricio-bot</a>
+                    </td>
+                    <td>
+                        <a href="/123456">123456</a>
+                    </td>
+                    <td>10</td>
+                </tr>
+            </tbody>
+            </thead>
+        </table>
+    </div>
+</div>
