@@ -2,7 +2,7 @@
     <h1 class='my-4'>{{title}}</h1>
     <p>Welcome to {{title}}</p>
 
-    <form action="/shortcode" method='POST' class="my-4">
+    <form action="/shortcode" method="POST" class="my-4">
         <label class="visually-hidden form-label" for="longUrl">Url</label>
         <div class="input-group">
             <input required placeholder='URL' type="url" name="longUrl" id="longUrl" class="form-control mr-2 col">
@@ -18,15 +18,17 @@
                     <th>Clicks</th>
                 </tr>
             <tbody>
+                {{#each shortUrls}}
                 <tr>
                     <td>
-                        <a href="https://github.com/patricio-bot" target="_blank">https://github.com/patricio-bot</a>
+                        <a href="{{long}}" target="_blank">{{long}}</a>
                     </td>
                     <td>
-                        <a href="/123456">123456</a>
+                        <a href="{{short}}">{{short}}</a>
                     </td>
-                    <td>10</td>
+                    <td>{{clicks}}</td>
                 </tr>
+                {{/each}}
             </tbody>
             </thead>
         </table>
