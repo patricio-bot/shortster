@@ -16,6 +16,7 @@
                     <th>Full URL</th>
                     <th>Short URL</th>
                     <th>Clicks</th>
+
                 </tr>
             <tbody>
                 {{#each shortUrls}}
@@ -24,9 +25,10 @@
                         <a href="{{long}}" target="_blank">{{long}}</a>
                     </td>
                     <td>
-                        <a href="{{short}}">{{short}}</a>
+                        <a href="{{short}}" target="_blank">{{short}}</a>
                     </td>
                     <td>{{clicks}}</td>
+
                 </tr>
                 {{/each}}
             </tbody>

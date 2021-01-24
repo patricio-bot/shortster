@@ -10,4 +10,11 @@ router.post('/shortcode', async (req, res) => {
   await ShortUrl.create({ long: req.body.longUrl })
   res.redirect('/')
 })
+router.get('/:shortUrl', async (req, res) => {
+  const shortUrl = await ShortUrl.findOne({ short: req.params.shortUrl })
+  if (shortUrl == null) return res.sendStatus(404)
+  shortUrl.clicks++
+  shortUrl.save()
+  res.redirect(shortUrl.long)
+})
 module.exports = router;

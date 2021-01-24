@@ -17,7 +17,12 @@ const urlSchema = new Schema({
     clicks: {
         type: Number,
         required: true,
-        default: 40
+        default: 0
+    }
+}, {
+    timestamps: {
+        createdAt: 'created_at',
+        updatedAt: 'updated_at'
     }
 })
 module.exports = mongoose.model('ShortUrl', urlSchema)
