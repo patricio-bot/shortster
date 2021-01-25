@@ -22,6 +22,14 @@ const urlSchema = new Schema({
     date: {
         type: String,
         default: Date.now
+    },
+    name: {
+        type: String,
+        default: "no-name"
+    },
+    description: {
+        type: String,
+        default: 'no description provided'
     }
 }, {
     timestamps: {

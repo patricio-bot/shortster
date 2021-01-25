@@ -18,6 +18,7 @@
                     <th>Full URL</th>
                     <th>Short URL</th>
                     <th>Clicks</th>
+                    <th>Name</th>
                     <th>Stats</th>
                     <th>Edit</th>
 
@@ -32,6 +33,11 @@
                         <a href="{{short}}" target="_blank">{{short}}</a>
                     </td>
                     <td>{{clicks}}</td>
+                    {{#if name}}
+                    <td>{{name}}</td>
+                    {{else}}
+                    <td>Unknown</td>
+                    {{/if}}
 
                     <td>
                         <a href="/stats?shortcode={{this.short}}" class="btn btn-primary">
@@ -39,7 +45,7 @@
                         </a>
                     </td>
                     <td>
-                        <a href="/edit?short_id={{this._id}}" class="btn btn-danger">
+                        <a href="/edit?shortcode={{this.short}}" class="btn btn-danger">
                             edit
                         </a>
                     </td>

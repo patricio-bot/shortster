@@ -12,6 +12,8 @@
                     <th>Clicks</th>
                     <th>Created at</th>
                     <th>Accessed at</th>
+                    <th>Name</th>
+                    <th>Description</th>
 
                 </tr>
             <tbody>
@@ -26,6 +28,16 @@
                     <td>{{oneShortcode.clicks}}</td>
                     <td>{{oneShortcode.date}}</td>
                     <td>{{oneShortcode.updated_at}}</td>
+                    {{#if oneShortcode.name}}
+                    <td>{{oneShortcode.name}}</td>
+                    {{else}}
+                    <td>Unknown</td>
+                    {{/if}}
+                    {{#if oneShortcode.description}}
+                    <td>{{oneShortcode.description}}</td>
+                    {{else}}
+                    <td>No description provided.</td>
+                    {{/if}}
 
 
                 </tr>
@@ -34,5 +46,5 @@
             </thead>
         </table>
     </div>
-    <a href="/" class="btn btn-success my-4">Home</a>
+    <a href="/" class="btn btn-primary my-4">Home</a>
 </div>
