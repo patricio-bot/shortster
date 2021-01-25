@@ -1,0 +1,38 @@
+<div class="container">
+    <h1 class='my-4'>{{title}}/Stats</h1>
+    <p>Welcome to {{title}}</p>
+
+    <p>Here you can find all the information related to {{oneShortcode.short}} shortcode</p>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Full URL</th>
+                    <th>Short URL</th>
+                    <th>Clicks</th>
+                    <th>Created at</th>
+                    <th>Accessed at</th>
+
+                </tr>
+            <tbody>
+
+                <tr>
+                    <td>
+                        <a href="{{oneShortcode.long}}" target="_blank">{{oneShortcode.long}}</a>
+                    </td>
+                    <td>
+                        <a href="{{oneShortcode.short}}" target="_blank">{{oneShortcode.short}}</a>
+                    </td>
+                    <td>{{oneShortcode.clicks}}</td>
+                    <td>{{oneShortcode.date}}</td>
+                    <td>{{oneShortcode.updated_at}}</td>
+
+
+                </tr>
+
+            </tbody>
+            </thead>
+        </table>
+    </div>
+    <a href="/" class="btn btn-success my-4">Home</a>
+</div>

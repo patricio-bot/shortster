@@ -7,8 +7,22 @@ router.get('/', async (req, res, next) => {
   res.render('index', { title: 'Shortster', shortUrls: shortUrls });
 });
 router.post('/shortcode', async (req, res) => {
-  await ShortUrl.create({ long: req.body.longUrl })
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  await ShortUrl.create({ long: req.body.longUrl, date: new Date().toLocaleDateString(undefined, options) })
+
   res.redirect('/')
+})
+router.get('/stats', (req, res, next) => {
+
+  ShortUrl.findOne({ short: req.query.shortcode })
+    .then(oneShortcode => {
+      if (!oneShortcode) {
+        return res.sendStatus(404)
+
+      }
+      res.render("stats", { title: 'Shortster', oneShortcode })
+    })
+    .catch(next)
 })
 router.get('/:shortUrl', async (req, res) => {
   const shortUrl = await ShortUrl.findOne({ short: req.params.shortUrl })

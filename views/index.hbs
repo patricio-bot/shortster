@@ -1,6 +1,8 @@
 <div class="container">
     <h1 class='my-4'>{{title}}</h1>
     <p>Welcome to {{title}}</p>
+    <p>Paste your url and we will create a short URL for you.</p>
+
 
     <form action="/shortcode" method="POST" class="my-4">
         <label class="visually-hidden form-label" for="longUrl">Url</label>
@@ -16,6 +18,8 @@
                     <th>Full URL</th>
                     <th>Short URL</th>
                     <th>Clicks</th>
+                    <th>Stats</th>
+                    <th>Edit</th>
 
                 </tr>
             <tbody>
@@ -28,6 +32,17 @@
                         <a href="{{short}}" target="_blank">{{short}}</a>
                     </td>
                     <td>{{clicks}}</td>
+
+                    <td>
+                        <a href="/stats?shortcode={{this.short}}" class="btn btn-primary">
+                            stats
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/edit?short_id={{this._id}}" class="btn btn-danger">
+                            edit
+                        </a>
+                    </td>
 
                 </tr>
                 {{/each}}
