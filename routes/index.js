@@ -14,11 +14,20 @@ router.post('/shortcode', async (req, res) => {
   const long = req.body.longUrl
   let shorten = req.body.shortUrl
 
+  const shortRegEx = /[a-zA-Z0-9]{4}/g
   if (!shorten) {
     shorten = customId(6)
-  } else {
-    shorten = shorten
   }
+  if (shortRegEx.test(shorten)) {
+    shorten = shorten
+
+  } else {
+    res.render('error', { message: 'Bad shortcode. Shortcodes must be at least 4 characters long and contain only letters (case sensitive) and numbers.', status: 'Error' })
+    return
+  }
+
+
+
 
   if (validUrl.isUri(long)) {
     let url = await ShortUrl.findOne({ long })
