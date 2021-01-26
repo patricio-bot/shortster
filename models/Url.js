@@ -1,36 +1,22 @@
 const mongoose = require('mongoose')
-const customId = require('../helpers/customId')
+
 
 const Schema = mongoose.Schema
 
 const urlSchema = new Schema({
-    long: {
-        type: String,
-        required: true
-    },
-    short: {
-        type: String,
-        required: true,
-        default: () => customId(6)
 
-    },
+    long: String,
+    short: String,
     clicks: {
         type: Number,
-        required: true,
         default: 0
     },
     date: {
         type: String,
         default: Date.now
     },
-    name: {
-        type: String,
-        default: "no-name"
-    },
-    description: {
-        type: String,
-        default: 'no description provided'
-    }
+    name: String,
+    description: String
 }, {
     timestamps: {
         createdAt: 'created_at',

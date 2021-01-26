@@ -1,17 +1,47 @@
 var express = require('express');
 var router = express.Router();
+const validUrl = require('valid-url')
 const ShortUrl = require('../models/Url')
+const customId = require('../helpers/customId')
 
-/* GET home page. */
+
 router.get('/', async (req, res, next) => {
   const shortUrls = await ShortUrl.find()
   res.render('index', { title: 'Shortster', shortUrls: shortUrls });
 });
 router.post('/shortcode', async (req, res) => {
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  await ShortUrl.create({ long: req.body.longUrl, date: new Date().toLocaleDateString(undefined, options) })
+  const long = req.body.longUrl
+  let shorten = req.body.shortUrl
 
-  res.redirect('/')
+  if (!shorten) {
+    shorten = customId(6)
+  } else {
+    shorten = shorten
+  }
+
+  if (validUrl.isUri(long)) {
+    let url = await ShortUrl.findOne({ long })
+    if (url) {
+      console.log('url is already');
+
+
+      res.render('error', { message: 'The url is already in database', status: 'Error' })
+      return
+    }
+
+    else {
+      short = shorten
+      url = new ShortUrl({
+        long,
+        short,
+        date: new Date().toLocaleDateString(undefined, options)
+      })
+      await url.save()
+
+      res.redirect('/')
+    }
+  }
 })
 router.get('/stats', (req, res, next) => {
 
@@ -26,7 +56,7 @@ router.get('/stats', (req, res, next) => {
     .catch(next)
 })
 router.get('/edit', (req, res, next) => {
-  ShortUrl.findOne({ short: req.query.shortcode })
+  ShortUrl.findOne({ _id: req.query.shortcode_id })
     .then(editShort => {
       res.render('edit', { title: 'Shortster', editShort })
     })
@@ -36,12 +66,12 @@ router.get('/edit', (req, res, next) => {
 })
 
 router.post('/edit', (req, res, next) => {
-  ShortUrl.findOne({ short: req.query.shortcode })
+  ShortUrl.findById(req.query.shortcode_id)
     .then(() => {
       let { name, description } = req.body
       let shortUpdated = { name, description }
 
-      ShortUrl.updateOne({ short: req.query.shortcode }, shortUpdated, { new: true })
+      ShortUrl.updateOne({ _id: req.query.shortcode_id }, shortUpdated, { new: true })
         .then(() => {
           res.redirect('/')
         })

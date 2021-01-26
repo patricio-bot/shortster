@@ -3,11 +3,16 @@
     <p>Welcome to {{title}}</p>
     <p>Paste your url and we will create a short URL for you.</p>
 
+    <p> Or you can paste the url and introduce your own shortUrl. This must be at least 4 characters long. Then Shorster
+        will generate a shortcode based on your short Url. </p>
+
 
     <form action="/shortcode" method="POST" class="my-4">
         <label class="visually-hidden form-label" for="longUrl">Url</label>
         <div class="input-group">
             <input required placeholder='URL' type="url" name="longUrl" id="longUrl" class="form-control mr-2 col">
+            <input placeholder='custom short URL' type="text" name="shortUrl" id="shortUrl"
+                class="form-control mr-2 col">
             <button class="btn btn-success" type="submit">Short</button>
         </div>
     </form>
@@ -45,7 +50,7 @@
                         </a>
                     </td>
                     <td>
-                        <a href="/edit?shortcode={{this.short}}" class="btn btn-danger">
+                        <a href="/edit?shortcode_id={{this._id}}" class="btn btn-danger">
                             edit
                         </a>
                     </td>
