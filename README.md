@@ -1,6 +1,6 @@
-# Shorster
+# Shortster
 
-Shorster shortens long urls. This process can be automatic or the user can enter their own short url. It also has statistics views, where the user can see how many times that shortcode has been used, its creation and last access date, and also the name and description associated with that shortcode. The user can add a name and description to the shortcode.
+Shortster shortens long URLs. This process can be automatic or the user can enter their own short URL. It also has statistics views, where the user can see how many times that shortcode has been used, its creation and last access date, and also the name and description associated with that shortcode. The user can add a name and description to the shortcode.
 
 ![logo](/public/images/logo.jpg)
 
@@ -27,7 +27,7 @@ Run dev mode
 ## Deploy
 
 Check the app deployed on heroku!
-[Shorster](https://shorster.herokuapp.com/)
+[Shortster](https://shorster.herokuapp.com/)
 
 <br/>
 
