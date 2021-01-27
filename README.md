@@ -26,6 +26,7 @@ Run dev mode
 
 ## Deploy
 
+Check the app deployed on heroku!
 [Shorster](https://shorster.herokuapp.com/)
 
 <br/>
@@ -45,7 +46,7 @@ Run dev mode
 | **Method** | **Route**    | **Description**                                              |
 | ---------- | ------------ | ------------------------------------------------------------ |
 | `GET`      | `/`          | Main page. Renders `index`                                   |
-| `POST`     | `/shortcode` | Creates short Urls. Redirects to ìndex`                      |
+| `POST`     | `/shortcode` | Creates short Urls. Redirects to `index`                     |
 | `GET`      | `/stats`     | Renders `stats` view                                         |
 | `GET`      | `/edit`      | Renders `edit` view                                          |
 | `POST`     | `/edit`      | Update name and description of a short Url. Redirects to `/` |
