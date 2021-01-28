@@ -14,11 +14,11 @@ router.post('/shortcode', async (req, res) => {
   const long = req.body.longUrl
   let shorten = req.body.shortUrl
 
-  const shortRegEx = /[a-zA-Z0-9]{4}/
+  const shortRegEx = /^[a-zA-Z0-9]{4}$/g
   if (!shorten) {
     shorten = customId(6)
   }
-  if (shortRegEx.test(shorten)) {
+  else if (shortRegEx.test(shorten)) {
     shorten = shorten
 
   } else {
