@@ -79,3 +79,7 @@ Check the app deployed on heroku!
     }
 }
 ```
+
+## Bugs
+
+For some reason the regex check does not work. I thought I'd fixed it but nope.
