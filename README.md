@@ -79,3 +79,7 @@ Check the app deployed on heroku!
     }
 }
 ```
+
+## Bugs
+
+For some reason the regex check does not work if the database is empty.
